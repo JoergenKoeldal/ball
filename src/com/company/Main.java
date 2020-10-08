@@ -17,7 +17,7 @@ public class Main {
 
         TennisBall tb = new TennisBall("Treton", 2);
         balls.add(tb);
-        balls.add( new TennisBall("Wilson", 1));
+        balls.add(new TennisBall("Wilson", 1));
         balls.add(new TennisBall("Phillip", 3));
 
 
@@ -33,7 +33,7 @@ public class Main {
         return balls;
     }
 
-    public static ArrayList<Integer> getIntegers(){
+    public static ArrayList<Integer> getIntegers() {
 
         ArrayList<Integer> ints = new ArrayList<>();
         ints.add(10);
@@ -48,18 +48,36 @@ public class Main {
     }
 
     public static void main(String[] args) {
-           ArrayList<Ball> balls = getBalls();
+        ArrayList<Ball> balls = getBalls();
 //        System.out.println(balls.size());
 //         Ball mindsteBold = Collections.min(balls);
 
         Ball mindsteball = Collections.min(balls);
-        System.out.println(mindsteball);
+      //  System.out.println(mindsteball);
+        Collections.sort(balls);
+        System.out.println(balls);
+
+        for (int i = balls.size()-1; i >= 0; i--) {
+            Ball b = balls.get(i);
+            if (b.isTennisBall()) {
+                balls.remove(b);
+            }
+        }
+        System.out.println("TEASTATD" + balls);
 
 
 
+        //Denne kodedel looper gennem alle Ball objekterne og tilføjer tennisboldene til et arraylist
 
+        ArrayList<TennisBall> tbList = new ArrayList<>();
 
+        for (Ball b : balls) {
+            if (b instanceof TennisBall) {
+                tbList.add((TennisBall) b);
+            }
+        }
 
+       // System.out.println(tbList);
 
     }
 }
